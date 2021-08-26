@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+    <br /><br />
+    <p class="centerP">
+      This is the consent form for the study which will give you details on the general task, risks, compensation, and contact information in case you have any questions. Please read it carefully and if you agree to participate based on the conditions, click I AGREE TO PARTICIPATE and proceed.
+      <br /><br />
+      (If it doesn't load in the window, check to see if your browser downloaded it instead)
+      <br /><br />
+    <iframe id="form" src="forms/Consent_Form___MTurk.pdf" width="75%" height="500px">
+        </iframe>
+      </p>
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+      <button id="disagree" class="btn" onclick="disagree()" style="background-color:#DC143C">I DO NOT AGREE TO PARTICIPATE</button>
+      <button id="agree" class="btn" onclick="cont()" style="background-color:#00688B">I AGREE TO PARTICIPATE</button>
+    </p>
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+</body>
+</html>
+
+<script>
+    //0 is system is correct, 1 is system is incorrect
+    if (localStorage.intCond != "0") {
+      if (localStorage.intCond != "1") {
+        if (localStorage.intCond != "2") {
+          if (localstorage.intCond != "3") {
+            localStorage.intCond = 0
+          }
+        }
+      }
+    }
+
+    if (localStorage.ordCond != "0") {
+      if (localStorage.ordCond != "1") {
+        if (localStorage.ordCond != "2") {
+          localStorage.ordCond = 1
+        }
+      }
+    }
+
+    var i = 0;
+    var idVar = 0
+    var numBoxes = 0
+    var numFiles = 20;
+    var userDiff = 0
+    var userAns = []
+    var imgBoxes = []
+    var boxIDs = []
+    var correctIDs = []
+    var iteration = localStorage.iteration
+
+    console.log(document.getElementById("form"))
+
+    function cont() {
+      var today = new Date();
+      localStorage.tutBegin = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+      window.location.href = "demographics.html"
+
+    }
+
+    function disagree() {
+      alert("To complete the task you must agree to participate. If you do not wish to continue, please close the window.")
+    }
+
+    function nextImg() {
+        if (i == numFiles - 1) {
+          pAns = JSON.parse(localStorage.pAns)
+          pAns.push(userAns)
+          localStorage.pAns = JSON.stringify(pAns)
+          window.location.href = "questionnaire.html"
+        }
+        else {
+            i++
+            document.getElementById("imageID").src = "prediction/" + i + ".jpg"
+            userAns.push(userDiff)
+        }
+        console.log(userAns)
+    }
+</script>

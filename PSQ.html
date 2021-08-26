@@ -1,0 +1,157 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+
+    <br /><br />
+    <p class="centerP">
+        Please answer the following questions about the system.
+    </p>
+    <br /><br />
+    <p class="centerP">
+        Did you notice any weaknesses within the system?
+    </p>
+    <br />
+    <p class="centerP">
+        <textarea id="weak"></textarea>
+    </p>
+    <br /><br />
+    <p class="centerP">
+        Did you notice any changes to system accuracy across the rounds of the task?
+    </p>
+    <br />
+    <div class="radio-toolbar">
+      <p class="centerP">
+        <input type="radio" id="changes1" name="changesS" value="1">
+        <label for="changes1">Significant decrease</label>
+
+        <input type="radio" id="changes2" name="changesS" value="2">
+        <label for="changes2">Slight decrease</label>
+
+        <input type="radio" id="changes3" name="changesS" value="3">
+        <label for="changes3">No change</label>
+
+        <input type="radio" id="changes4" name="changesS" value="4">
+        <label for="changes4">Slight increase</label>
+
+        <input type="radio" id="changes5" name="changesS" value="5">
+        <label for="changes5">Significant increase</label>
+
+
+      </p>
+    </div>
+    <br />
+    <br />
+    <p class="centerP">
+        Do you have any comments regarding changes to system accuracy across rounds of the task?
+    </p>
+    <br />
+    <br />
+    <p class="centerP">
+        <textarea id="changes"></textarea>
+    </p>
+    <br /><br />
+    <p class="centerP">
+        Do you have any additional comments about the system or this task?
+    </p>
+    <br />
+    <p class="centerP">
+        <textarea id="comments"></textarea>
+    </p>
+    <br /><br />
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+        <button id="contBtn" class="btn" onclick="submit()">Submit</button>
+    </p>
+    <br />
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+    <script src="boxes.js"></script>
+
+</body>
+</html>
+
+<script>
+  iteration = parseInt(localStorage.iteration)
+  answered = 0
+  var continueBtn = document.getElementById("contBtn");
+  //continueBtn.style.background = "#A9A9A9";
+
+  //Handle sliders
+  //var slider1 = document.getElementById("q1");
+  //slider1.value = 50
+  //var output1 = document.getElementById("q1Val");
+  //output1.innerHTML = "??"; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  //slider1.onclick = function() {
+  //  output1.innerHTML = this.value;
+  //  slider1.className = "sliderA"
+  //  continueBtn.style.background = "#4CAF50"
+  //  answered = 1
+  //}
+
+
+  //Setup timer to simulate the system implementing the responses
+  //implementing = false
+  //if(parseInt(localStorage.intCond) > 0) {
+  //  implementing = true
+  //  setTimeout(delayContinue, 60000)  //1 minute delay
+
+  //  //Setup rotating gear icon
+  //  i = 1;
+  //  setInterval(turnGear, 500)
+  //}
+  //else {
+  //  document.getElementById("gear").style.display = "none"
+  //}
+  //Questionnaire completion check
+  const isComplete = (currentValue) => currentValue == 1
+
+
+  function submit() {
+    weak = document.getElementById("weak").value
+    comments = document.getElementById("comments").value
+    changes = document.getElementById("changes").value
+    answered = 1
+
+    try {
+      localStorage.changesS = document.querySelector('input[name="changesS"]:checked').value
+    }
+    catch {
+         answered = 0
+    }
+    if (weak == "") {
+        answered = 0
+    }
+    if (comments == "") {
+        answered = 0
+    }
+    if (changes == "") {
+        answered = 0
+    }
+
+    if (answered == 0) {
+      alert("You must answer all questions before continuing")
+    }
+    else {
+        localStorage.weak = JSON.stringify(weak)
+        localStorage.comments = JSON.stringify(comments)
+        localStorage.changes = JSON.stringify(changes)
+        complete()
+        //window.location.href = "binaryInteraction.html"
+
+    }
+  }
+
+  function complete() {
+    //TODO: Output values to json file
+
+    //TODO: Move to final page (what to put here for AMT/SONA I don't know)
+
+    window.location.href = "final.html"
+  }
+
+</script>

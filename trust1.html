@@ -1,0 +1,247 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+
+    <br /><br />
+    <p class="centerP">
+        Please rate your agreement with the following statements:
+    </p>
+    <br /><br />
+    <p class="centerP">
+        The system performs reliably.
+    </p>
+    <br />
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider" step="1" id="t1">
+      <div class="sliderticks">
+        <p>1<br />Strongly Disagree</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4<br />Neutral</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7<br />Strongly Agree</p>
+
+      </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+    <p class="centerP">
+        The outputs the system produces are as good as that which a highly competent person could produce.
+    </p>
+    <br />
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider" step="1" id="t2">
+      <div class="sliderticks">
+        <p>1<br />Strongly Disagree</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4<br />Neutral</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7<br />Strongly Agree</p>
+
+      </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+    <p class="centerP">
+        It is easy to follow what the system does.
+    </p>
+    <br />
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider" step="1" id="t3">
+      <div class="sliderticks">
+        <p>1<br />Strongly Disagree</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4<br />Neutral</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7<br />Strongly Agree</p>
+
+      </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+    <p class="centerP">
+        The system correctly uses the information I enter.
+    </p>
+    <br />
+    <div class="slidecontainer">
+      <input type="range" min="1" max="7" value="4" class="slider" step="1" id="t4">
+      <div class="sliderticks">
+        <p>1<br />Strongly Disagree</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4<br />Neutral</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7<br />Strongly Agree</p>
+
+      </div>
+    </div>
+    <br/><br/><br/><br/><br/><br/>
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+        <button id="contBtn" class="btn" onclick="submit()">Submit</button>
+    </p>
+    <br />
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+    <script src="boxes.js"></script>
+
+</body>
+</html>
+
+<script>
+  iteration = parseInt(localStorage.iteration)
+  s1 = 0
+  s2 = 0
+  s3 = 0
+  s4 = 0
+  var continueBtn = document.getElementById("contBtn");
+  var today = new Date();
+  localStorage.endTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  //continueBtn.style.background = "#A9A9A9";
+
+  //Handle sliders
+  //var slider1 = document.getElementById("q1");
+  //slider1.value = 50
+  //var output1 = document.getElementById("q1Val");
+  //output1.innerHTML = "??"; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  //slider1.onclick = function() {
+  //  output1.innerHTML = this.value;
+  //  slider1.className = "sliderA"
+  //  continueBtn.style.background = "#4CAF50"
+  //  answered = 1
+  //}
+
+
+  //Setup timer to simulate the system implementing the responses
+  //implementing = false
+  //if(parseInt(localStorage.intCond) > 0) {
+  //  implementing = true
+  //  setTimeout(delayContinue, 60000)  //1 minute delay
+
+  //  //Setup rotating gear icon
+  //  i = 1;
+  //  setInterval(turnGear, 500)
+  //}
+  //else {
+  //  document.getElementById("gear").style.display = "none"
+  //}
+  //Questionnaire completion check
+  const isComplete = (currentValue) => currentValue == 1
+
+  var slider1 = document.getElementById("t1");
+  slider1.value = 4
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider1.oninput = function() {
+    slider1.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s1 = 1
+  }
+  slider1.onclick = function() {
+    slider1.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s1 = 1
+  }
+
+  var slider2 = document.getElementById("t2");
+  slider2.value = 4
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider2.oninput = function() {
+    slider2.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s2 = 1
+  }
+  slider2.onclick = function() {
+    slider2.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s2 = 1
+  }
+
+  var slider3 = document.getElementById("t3");
+  slider3.value = 4
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider3.oninput = function() {
+    slider3.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s3 = 1
+  }
+  slider3.onclick = function() {
+    slider3.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s3 = 1
+  }
+
+  var slider4 = document.getElementById("t4");
+  slider4.value = 4
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider4.oninput = function() {
+    slider4.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s4 = 1
+  }
+  slider4.onclick = function() {
+    slider4.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    s4 = 1
+  }
+
+  function submit() {
+    answered = 1
+    sAnswered = s1 + s2 + s3 + s4
+    try {
+      localStorage.trust1 = document.getElementById("t1").value
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.trust2 = document.getElementById("t2").value
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.trust3 = document.getElementById("t3").value
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.trustUses = document.getElementById("t4").value
+    }
+    catch {
+         answered = 0
+    }
+    if (answered == 0) {
+      alert("Test")
+    }
+    else if(sAnswered < 4) {
+      alert("You must answer all questions before continuing")
+    }
+    else {
+        complete()
+        //window.location.href = "binaryInteraction.html"
+
+    }
+  }
+
+  function complete() {
+    //TODO: Output values to json file
+
+    //TODO: Move to final page (what to put here for AMT/SONA I don't know)
+
+    window.location.href = "PSQ.html"
+  }
+
+</script>

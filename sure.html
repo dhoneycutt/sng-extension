@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <p class="centerP">
+        System Prediction: <input id="sysPred" type="text" value="" disabled /> Your Answer: <input id="userVal" type="text" value="" disabled />
+    </p>
+    <br /> -->
+    <br /><br /><br />
+    <p id="textP" class="centerP" style="width:60%; font-size:24px" >
+        Are you ready to begin? You will not be able to return to the tutorial once you start.
+    </p>
+    <br />
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+        <button id="prevBtn" class="btn" onclick="previous()" style="font-size:30px; background-color:red">Back to tutorial</button>
+        <button id="nextBtn" class="btn" onclick="next()" style="font-size:30px; background-color:red">Go to task</button>
+    </p>
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+    <script src="boxes.js"></script>
+</body>
+</html>
+
+<script>
+  cond = localStorage.intCond
+  function previous() {
+    if(localStorage.intCond == "2") {
+      localStorage.tutPos = "end"
+      window.location.href = "tutorial.html"
+    }
+    else {
+      localStorage.tutPos = "end"
+      window.location.href = "instructions.html"
+    }
+
+  }
+
+  function next() {
+    var today = new Date();
+    localStorage.startTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    if(cond == "2") {
+      window.location.href = "main.html"
+    }
+    else if (cond == "3") {
+      window.location.href = "main.html"
+    }
+    else {
+      window.location.href = "main.html"
+    }
+  }
+
+</script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Select Condition</title>
+</head>
+<body>
+  <link rel="stylesheet" href="styles.css" />
+    <!-- <a onclick="increase()" href="#">Increasing (0)</a>
+    <br />
+    <a onclick="same()" href="#">No Change (1)</a>
+    <br />
+    <a onclick="decrease()" href="#">Decreasing (2)</a>
+    <br /><br />
+
+    <a onclick="noInteraction()" href="#">No Interaction (0)</a>
+    <br />
+    <a onclick="binaryInteraction()" href="#">Binary Interaction (1)</a>
+    <br />
+    <a onclick="fullInteraction()" href="#">Full Interaction (2)</a>
+    <br /><br />
+
+    <a onclick="turk()" href="#">Turk</a>
+    <br />
+    <a onclick="SONA()" href="#">SONA</a>
+    <br />
+    <a onclick="none()" href="#">None</a>
+    <br /> -->
+    <p class="centerP">
+      Redirecting to study
+    </p>
+
+    <br />
+    <p class="attribution">
+      All images are from the Open Images Dataset V5, used under <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> license.
+      <div>Icons made by <a href="https://freeicons.io/profile/714">Raj Dev</a> from <a href="https://www.freeicons.io/">www.freeicons.io</a></div>
+    </p>
+</body>
+</html>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  localStorage.clear()
+  localStorage.intCond = 2
+  localStorage.ordCond = 0
+  localStorage.iteration = 0
+  localStorage.midQs = JSON.stringify([0, 0, 0])
+  localStorage.pAns = JSON.stringify([])
+
+  localStorage.intCond = getUrlParam("iC", 0)
+  localStorage.ordCond = getUrlParam("oC", 0)
+  localStorage.removeItem('id')
+  window.location.href = "consentform.html"
+  // output = {}
+  // output.id = "help"
+  // output.preQ = {}
+  // output.postQ = {}
+  // output.time = {}
+  //
+  // $.ajax({
+  //   type : "POST",
+  //   url : "json.php",
+  //   data : {
+  //       json : JSON.stringify(output)
+  //   }
+  // });
+
+  function getUrlParam(parameter, defaultvalue){
+      var urlparameter = defaultvalue;
+      if(window.location.href.indexOf(parameter) > -1){
+          urlparameter = getUrlVars()[parameter];
+          }
+      return urlparameter;
+  }
+
+  function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+      });
+      return vars;
+  }
+
+
+  function move() {
+    localStorage.removeItem('id')
+    window.location.href = "consentform.html"
+  }
+
+  function increase() {
+    localStorage.ordCond = 0
+    ordVal.innerHTML = "0"
+  }
+  function same() {
+    localStorage.ordCond = 1
+    ordVal.innerHTML = "1"
+  }
+  function decrease() {
+    localStorage.ordCond = 2
+    ordVal.innerHTML = "2"
+  }
+
+  function noInteraction() {
+    localStorage.intCond = 0
+    intVal.innerHTML = "0"
+  }
+  function binaryInteraction() {
+    localStorage.intCond = 1
+    intVal.innerHTML = "1"
+  }
+  function fullInteraction() {
+    localStorage.intCond = 2
+    intVal.innerHTML = "2"
+  }
+
+  function turk() {
+    localStorage.from = "T"
+  }
+  function SONA() {
+    localStorage.from = "S"
+  }
+  function none() {
+    localStorage.from = "N"
+  }
+
+</script>

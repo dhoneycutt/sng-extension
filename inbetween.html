@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+    <br /><br /><br /><br /><br />
+    <p id="msg" class="centerP">
+        Thank you for your input. You will now be taken to another task in which you will be asked to predict if the system would successfully identify an image or not.
+    </p>
+    <br />
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+        <button id="cont" class="btn" onclick="cont()">Continue</button>
+    </p>
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+    <script src="boxes.js"></script>
+</body>
+</html>
+
+<script>
+    //0 is system is correct, 1 is system is incorrect
+
+    var i = 0;
+    var idVar = 0
+    var numBoxes = 0
+    var numFiles = 20;
+    var userDiff = 0
+    var userAns = []
+    var imgBoxes = []
+    var boxIDs = []
+    var correctIDs = []
+    var iteration = localStorage.iteration
+
+    if(localStorage.intCond == "0") {
+      document.getElementById("msg").innerHTML = "Thank you for your responses. You will now be taken to another task in which you will be asked to evaluate how you think the system would perform on different images."
+    }
+
+    function cont() {
+      window.location.href = "prediction.html"
+    }
+
+    function disagree() {
+      userDiff = 1
+      nextImg()
+    }
+
+    function nextImg() {
+        if (i == numFiles - 1) {
+          pAns = JSON.parse(localStorage.pAns)
+          pAns.push(userAns)
+          localStorage.pAns = JSON.stringify(pAns)
+          window.location.href = "questionnaire.html"
+        }
+        else {
+            i++
+            document.getElementById("imageID").src = "prediction/" + i + ".jpg"
+            userAns.push(userDiff)
+        }
+        console.log(userAns)
+    }
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script src="tutorial.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Click a word in the paragraph and highlight it.</title>
+<!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbar-static/"> -->
+
+
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .centered {
+    text-align: center
+  }
+
+  .prediction {
+    padding-left: 0px
+  }
+  .contributing {
+    padding-right: 0px
+  }
+</style>
+
+
+<!-- Custom styles for this template -->
+<link href="navbar-top.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Tutorial</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- <main class="container">
+    <div class="bg-light p-5 rounded">
+      <h1>Navbar example</h1>
+      <p class="lead"></p>
+      <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
+    </div>
+  </main> -->
+  <main class="container">
+    <!-- <div class="bg-light p-5 rounded">
+      <h1>Navbar example</h1>
+      <p id="clickable" class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+      <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
+    </div> -->
+    <!-- <div class="bg-light p-5 rounded"> -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 id="sampleCount">Sample Text - Incorrect</h4>
+        </div>
+        <div class="panel-body">
+          <p id="clickable" class="lead">This text shouldn't be shown</p>
+        </div>
+      </div>
+      <div class="container-fluid content-row centered">
+        <p class="lead centered">Press submit once you are done.</a>
+        </br>
+        <div class="centered">
+          <a class="btn btn-lg btn-primary" role="button" id="prevButton">Previous</a>
+          <a class="btn btn-lg btn-primary" role="button" id="nextButton">Next</a>
+        </div>
+      </div>
+    <!-- </div> -->
+  </main>
+  <!-- <h3>Long-Text</h3>
+  <p id="clickable">A simple tool to store and display texts longer than a few lines.
+  The search button will highlight all the words matching the name of objects that are members of the classes listed in searchedClasses, itself a member of the KeySet class. The highlighted words are hypertext.
+  Edit invokes wscripts/acedb.editor, which by default launches emacs. Edit that file to start another editor in its place.
+  Save will recover from the emacs but will not destroy it.
+  Read will read a text file, so you could Search it.
+      **general** grep is a way to annotate a set of longtexts versus the searchedClasses. It outputs an ace file that you can then hand check and read back in acedb to create XREF from longTexts to genes etc.</p>
+  <h3>World Wide NotePad</h3>
+  <p>World wide notepad is a small text editor similar to Microsoft's notepad but has some more useful features like an auto typer to make typing the same sentence or word more easy, also World Wide NotePad has a text to speech feature which reads all text in the current open document and speaks it out load to you.</p>
+  <h3>Etelka Wide Text Pro Bold Italic</h3> -->
+
+</body>
+</html>

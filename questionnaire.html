@@ -1,0 +1,177 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+
+    <br /><br />
+    <p id="waitMsg" class="centerP">
+
+    </p>
+    <div id="gearDiv">
+      <img id="gear" src="gear1.png" title="The system is implemeting your feedback. This should take no more than a few minutes."/>
+    </div>
+    <br /><br /><br /><br />
+    <p class="centerP">
+        How likely do you think the system is to identify an image successfully?
+    </p>
+    <br />
+    <div class="slidecontainer">
+      <input type="range" min="0" max="100" value="50" class="slider" id="q1">
+      <div class="sliderticks">
+        <p>0%<br />(Never)</p>
+        <p></p>
+        <p>10%</p>
+        <p></p>
+        <p>20%</p>
+        <p></p>
+        <p>30%</p>
+        <p></p>
+        <p>40%</p>
+        <p></p>
+        <p>50%</p>
+        <p></p>
+        <p>60%</p>
+        <p></p>
+        <p>70%</p>
+        <p></p>
+        <p>80%</p>
+        <p></p>
+        <p>90%</p>
+        <p></p>
+        <p>100%<br />(Always)</p>
+      </div>
+      <!-- <p class="centerP">Answer: <span id="q1Val"></span></p> -->
+      <p class="centerP">Answer: <span id="q1Val"></span></p>
+    </div>
+    <br /><br />
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+        <button id="contBtn" class="btn" onclick="submit()">Continue</button>
+    </p>
+    <br />
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+    <script src="boxes.js"></script>
+
+</body>
+</html>
+
+<script>
+  iteration = localStorage.round
+  var today = new Date();
+  if (iteration == "0") {
+    localStorage.time0 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  }
+  if (iteration == "1") {
+    localStorage.time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  }
+  if (iteration == "2") {
+    localStorage.time2 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  }
+
+  waitMsg = document.getElementById("waitMsg")
+  if (localStorage.intCond == "0") {
+    waitMsg.innerHTML = "Please answer the following question."
+  }
+  else {
+    if (iteration == "2") {
+      waitMsg.innerHTML = "Please answer the following question."
+    }
+    else {
+      waitMsg.innerHTML = "While the system is implementing your feedback, please answer the following question. This should take no more than a minute."
+    }
+  }
+
+
+  iteration = parseInt(localStorage.round)
+  answered = 0
+  var continueBtn = document.getElementById("contBtn");
+  continueBtn.style.background = "#A9A9A9";
+
+  //Handle sliders
+  var slider1 = document.getElementById("q1");
+  slider1.value = 50
+  var output1 = document.getElementById("q1Val");
+  output1.innerHTML = "??"; // Display the default slider value
+  slider1.oninput = function() {
+    output1.innerHTML = this.value + "%";
+    slider1.className = "sliderA"
+    answered = 1
+    if(implementing == false) {
+      continueBtn.style.background = "#4CAF50"
+    }
+  }
+  slider1.onclick = function() {
+    output1.innerHTML = this.value + "%";
+    slider1.className = "sliderA"
+    answered = 1
+    if(implementing == false) {
+      continueBtn.style.background = "#4CAF50"
+    }
+  }
+
+  //Setup timer to simulate the system implementing the responses
+  implementing = false
+  if(parseInt(localStorage.intCond) > 0 && iteration != "2") {
+    implementing = true
+    setTimeout(delayContinue, 45000)  //45s delay
+
+    //Setup rotating gear icon
+    i = 1;
+    setInterval(turnGear, 500)
+  }
+  else {
+    document.getElementById("gear").style.display = "none"
+  }
+  //Questionnaire completion check
+  const isComplete = (currentValue) => currentValue == 1
+
+
+
+  function delayContinue() {
+    implementing = false
+  }
+
+  function turnGear() {
+    if (implementing == false) {
+      document.getElementById("gear").style.display = "none"
+      if(answered == 1) {
+        continueBtn.style.background = "#4CAF50"
+      }
+    }
+    else if (i == 1) {
+      document.getElementById("gear").src = "gear2.png"
+      i = 2
+    }
+    else if (i == 2) {
+      document.getElementById("gear").src = "gear1.png"
+      i = 1
+    }
+  }
+
+  function submit() {
+    //if(!answered.every(isComplete)) {
+    //implementing = false
+    if(answered == 0) {
+      alert("You must answer all questions before continuing")
+    }
+    else if (implementing == true) {
+      alert("The system is busy implementing your feedback. This should take no more than a minute.")
+    }
+    else {
+      midQs = JSON.parse(localStorage.midQs)
+      midQs[parseInt(localStorage.round)] = slider1.value
+      localStorage.midQs = JSON.stringify(midQs)
+      localStorage.round = parseInt(localStorage.round) + 1
+      if(iteration >= 2) {
+        window.location.href = "trust0.html"
+      }
+      else {
+        window.location.href = "afterQ.html"
+      }
+    }
+  }
+
+</script>

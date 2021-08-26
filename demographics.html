@@ -1,0 +1,244 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ALT</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css" />
+
+    <br /><br />
+    <p class="centerP">
+        Background Questionnaire: Please answer the following questions about yourself
+    </p>
+    <br /><br />
+    <p class="centerP">
+        What is your age?
+    </p>
+    <br />
+    <div class="centerP">
+      <input id="ageInput" type="number" min="18"></input>
+    </div>
+
+    <br /><br />
+    <p class="centerP">
+        What gender do you most identify with?
+    </p>
+    <br />
+
+    <div class="radio-toolbar">
+      <p class="centerP">
+        <input type="radio" id="q21" name="gender" value="Male">
+        <label for="q21">Male</label>
+
+        <input type="radio" id="q22" name="gender" value="Female">
+        <label for="q22">Female</label>
+
+        <input type="radio" id="q23" name="gender" value="Non-binary">
+        <label for="q23">Non-binary</label>
+
+        <input type="radio" id="q24" name="gender" value="Not-listed">
+        <label for="q24">Not listed</label>
+
+        <input type="radio" id="q25" name="gender" value="Not-specify">
+        <label for="q25">Prefer not to specify</label>
+
+
+      </p>
+    </div>
+
+    <br /><br />
+    <p class="centerP">
+        What is the highest level of education you have achieved?
+    </p>
+    <br />
+    <div class="radio-toolbar">
+      <p class="centerP">
+        <input type="radio" id="q31" name="education" value="notHS">
+        <label for="q31">Less than High School</label>
+
+        <input type="radio" id="q32" name="education" value="HS">
+        <label for="q32">High School</label>
+
+        <input type="radio" id="q33" name="education" value="AS">
+        <label for="q33">Associate's Degree</label>
+
+        <input type="radio" id="q34" name="education" value="BS">
+        <label for="q34">Bachelor's Degree</label>
+
+        <input type="radio" id="q35" name="education" value="MS">
+        <label for="q35">Master's/Professional Degree</label>
+
+        <input type="radio" id="q36" name="education" value="D">
+        <label for="q36">Doctorate or higher</label>
+
+      </p>
+    </div>
+
+    <br /><br />
+
+    <p class="centerP">
+        Do you have a history of color vision weakness?
+    </p>
+    <br />
+    <div class="radio-toolbar">
+      <p class="centerP">
+        <input type="radio" id="q41" name="CVWeakness" value="No">
+        <label for="q41">No</label>
+
+        <input type="radio" id="q42" name="CVWeakness" value="Yes">
+        <label for="q42">Yes</label>
+
+      </p>
+    </div>
+    <br /><br />
+    <p class="centerP">
+        How familiar are you with machine learning and/or artificial intelligence?
+    </p>
+    <br />
+    <div class="slidecontainer">
+      <input type="range" min="0" max="10" value="5" class="slider" step="1" id="q1">
+      <div class="sliderticks">
+        <p>0<br />(Novice)</p>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10<br />(Expert)</p>
+      </div>
+      <p class="centerP">Answer: <span id="q1Val"></span></p>
+    </div>
+    <br /><br />
+        <!--<button id="prevBtn" class="btn" onclick="prevImg()">Previous Image</button>-->
+    <p class="centerP">
+        <button id="contBtn" class="btn" onclick="submit()">Submit</button>
+    </p>
+    <br />
+        <!--<button id="clearBtn" class="btn" onclick="clearBoxes()">Clear Boxes</button>-->
+    <script src="boxes.js"></script>
+
+</body>
+</html>
+
+<script>
+  interaction = parseInt(localStorage.intCond)
+  sAnswered = 0
+  var continueBtn = document.getElementById("contBtn");
+
+  var slider1 = document.getElementById("q1");
+  slider1.value = 5
+  var output1 = document.getElementById("q1Val");
+  output1.innerHTML = "??"; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider1.oninput = function() {
+    output1.innerHTML = this.value;
+    slider1.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    sAnswered = 1
+  }
+  slider1.onclick = function() {
+    output1.innerHTML = this.value;
+    slider1.className = "sliderA"
+    continueBtn.style.background = "#4CAF50"
+    sAnswered = 1
+  }
+  //continueBtn.style.background = "#A9A9A9";
+
+  //Handle sliders
+  //var slider1 = document.getElementById("q1");
+  //slider1.value = 50
+  //var output1 = document.getElementById("q1Val");
+  //output1.innerHTML = "??"; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  //slider1.onclick = function() {
+  //  output1.innerHTML = this.value;
+  //  slider1.className = "sliderA"
+  //  continueBtn.style.background = "#4CAF50"
+  //  answered = 1
+  //}
+
+
+  //Setup timer to simulate the system implementing the responses
+  //implementing = false
+  //if(parseInt(localStorage.intCond) > 0) {
+  //  implementing = true
+  //  setTimeout(delayContinue, 60000)  //1 minute delay
+
+  //  //Setup rotating gear icon
+  //  i = 1;
+  //  setInterval(turnGear, 500)
+  //}
+  //else {
+  //  document.getElementById("gear").style.display = "none"
+  //}
+  //Questionnaire completion check
+  const isComplete = (currentValue) => currentValue == 1
+
+
+  function submit() {
+    answered = 1
+
+    //TODO: Add border around unanswered questions
+    try {
+      localStorage.age = document.getElementById("ageInput").value
+      if(localStorage.age < 18) {
+        alert("Age must be >18")
+        answered = 0
+      }
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.gender = document.querySelector('input[name="gender"]:checked').value
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.education = document.querySelector('input[name="education"]:checked').value
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.CVWeakness = document.querySelector('input[name="CVWeakness"]:checked').value
+    }
+    catch {
+         answered = 0
+    }
+    try {
+      localStorage.MLExp = document.getElementById("q1").value
+    }
+    catch {
+         answered = 0
+    }
+    if (sAnswered = 0) {
+      answered = 0
+    }
+    if (answered == 0) {
+      alert("You must answer all questions before continuing")
+    }
+    else {
+        window.location.href = "instructions.html"
+
+    }
+  }
+
+  function complete() {
+    //Move to appropriate page
+    if(interaction == 2) {
+      window.location.href = "fullInteraction.html"
+    }
+    else {
+      window.location.href = "binaryInteraction.html"
+    }
+  }
+
+</script>
