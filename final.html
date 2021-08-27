@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
 
     <p class="centerP">
-        Thank you for your participation. Please paste the following survey code into Mechanical Turk to receive your compensation. If there are any complications, please send a screenshot of this screen to
+        Thank you for your participation. Please upload the downloaded file with the name listed below <a href="https://ufl.qualtrics.com/jfe/form/SV_beFhw4VCUkLrwkC" target="_blank" rel="noopener noreferrer">here (link opens new tab)</a>. Then once you have uploaded the file, paste the following survey code into Mechanical Turk to receive your compensation. If there are any complications, please send a screenshot of this screen to (indiestudyamt at gmail dot com) along with an explanation of the issue. Thank you for completing our study.
     </p>
     <br />
     <p class="centerP">
@@ -73,21 +73,15 @@
   dlAnchorElem.setAttribute("download", output.id + ".json");
   dlAnchorElem.click();
 
-  // IDBox = document.getElementById("output")
-  // IDBox.value = output.id
+  document.getElementById('output').setAttribute("innerText", output.id)
 
-  // $.ajax({
-  //   type : "POST",
-  //   url : "json.php",
-  //   data : {
-  //       json : JSON.stringify(output)
-  //   }
-  // });
-  //
-  // function copy() {
-  //   IDBox.select()
-  //   document.execCommand('copy')
-  // }
+  IDBox = document.getElementById("output")
+  IDBox.value = output.id
+
+  function copy() {
+    IDBox.select()
+    document.execCommand('copy')
+  }
 
   //continueBtn.style.background = "#A9A9A9";
 

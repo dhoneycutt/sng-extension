@@ -1,0 +1,1 @@
+The library routines become part of the executable code. If a new version of the library is released that fixes bugs or supports new hardware devices, the statically linked program keeps using the old version. It loads the whole library even if all of the library is not used when the program is run. The library can be large relative to the program.

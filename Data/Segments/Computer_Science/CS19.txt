@@ -1,0 +1,1 @@
+Loop transformations that can reduce loop overhead, improve memory access, and exploit the hardware more effectively. For example, in loops that execute many iterations, such as those traditionally controlled by a for statement, the optimization of loop unrolling is often useful.
