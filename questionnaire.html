@@ -61,13 +61,13 @@
 <script>
   iteration = localStorage.round
   var today = new Date();
-  if (iteration == "0") {
+  if (iteration == "1") {
     localStorage.time0 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   }
-  if (iteration == "1") {
+  if (iteration == "2") {
     localStorage.time1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   }
-  if (iteration == "2") {
+  if (iteration == "3") {
     localStorage.time2 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   }
 
@@ -76,7 +76,7 @@
     waitMsg.innerHTML = "Please answer the following question."
   }
   else {
-    if (iteration == "2") {
+    if (iteration == "3") {
       waitMsg.innerHTML = "Please answer the following question."
     }
     else {
@@ -165,7 +165,7 @@
       midQs[parseInt(localStorage.round)] = slider1.value
       localStorage.midQs = JSON.stringify(midQs)
       localStorage.round = parseInt(localStorage.round) + 1
-      if(iteration >= 2) {
+      if(iteration >= 3) {
         window.location.href = "trust0.html"
       }
       else {
