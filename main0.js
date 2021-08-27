@@ -191,12 +191,6 @@ $(document).ready(function() {
     document.getElementById("word4").innerText = fileList[textPos][5]
     document.getElementById("word5").innerText = fileList[textPos][6]
 
-    document.getElementById("yword1").innerText = fileList[textPos][2]
-    document.getElementById("yword2").innerText = fileList[textPos][3]
-    document.getElementById("yword3").innerText = fileList[textPos][4]
-    document.getElementById("yword4").innerText = fileList[textPos][5]
-    document.getElementById("yword5").innerText = fileList[textPos][6]
-
     function highlight() {
       // Highlight initial words
       words = document.querySelectorAll(".word")
@@ -207,106 +201,6 @@ $(document).ready(function() {
           words[i].style.backgroundColor = "#FF1100";
         }
       }
-
-
-
-
-      // Handle clicking on words
-      $( "span" ).on( "click", function() {
-        // Check that clicked on span is an actual word and not whitespace, punctuation, or numerical
-        if(this.innerText.match(/[^a-zA-Z\']/) == null && this.innerText.length >1) {
-          // If already highlighted, unhighlight and remove from word list
-          // console.log(this.innerText)
-          // console.log("Word: " + this.innerText)
-          // Check if a stub exists
-          isStub = false
-          if(withStubs.includes(this.innerText.toLowerCase())) {
-            stubPos = stubLoc[withStubs.indexOf(this.innerText.toLowerCase())]
-            if (stubWords[stubPos].includes(this.innerText.toLowerCase())) {
-              for (var i = 0; i < stubWords[stubPos].length; i++) {
-                if (highlightedWords.includes(stubWords[stubPos][i])) {
-                  isStub = true
-                }
-              }
-            }
-          }
-          if(highlightedWords.includes(this.innerText.toLowerCase()) || isStub) {
-            // Un-highlight word
-            this.style.backgroundColor = "transparent"
-            // $( this ).css( "background-color", "transparent" );
-
-            // Un-highlight other copies of word
-            words = document.querySelectorAll(".word")
-            for (var i = 0; i < words.length; i++) {
-              // Check identical words
-              if (words[i].innerText.toLowerCase() == this.innerText.toLowerCase()) {
-                words[i].style.backgroundColor = "transparent";
-              }
-              // Check stub words
-              if (withStubs.includes(words[i].innerText.toLowerCase())) {
-                stubPos = stubLoc[withStubs.indexOf(words[i].innerText.toLowerCase())]
-                if (stubWords[stubPos].includes(words[i].innerText.toLowerCase()) && stubWords[stubPos].includes(this.innerText.toLowerCase())) {
-                  words[i].style.backgroundColor = "transparent";
-                }
-              }
-            }
-
-            // Remove from word list
-            if (withStubs.includes(this.innerText.toLowerCase())) {
-              stubPos = stubLoc[withStubs.indexOf(this.innerText.toLowerCase())]
-              console.log(stubWords[stubPos])
-              for (var i = 0; i < stubWords[stubPos].length; i++) {
-                if (highlightedWords.indexOf(stubWords[stubPos][i])) {
-                  position = highlightedWords.indexOf(stubWords[stubPos][i])
-                  if (~position) { highlightedWords.splice(position, 1) }
-                }
-              }
-            }
-            else {
-              if (highlightedWords.includes(this.innerText.toLowerCase())) {
-                position = highlightedWords.indexOf(this.innerText.toLowerCase())
-                if (~position) { highlightedWords.splice(position, 1) }
-              }
-            }
-
-            console.log(highlightedWords)
-            // if (~position) { highlightedWords.splice(position, 1) }
-            // console.log(highlightedWords)
-          }
-          // Else, highlight and add to word list
-          else {
-            // Highlight word
-            this.style.backgroundColor = "#FF1100"
-            // $( this ).css( "background-color", "red" );
-
-            // Highlight other copies of word
-            words = document.querySelectorAll(".word")
-            for (var i = 0; i < words.length; i++) {
-              if (words[i].innerText.toLowerCase() == this.innerText.toLowerCase()) {
-                words[i].style.backgroundColor = "#FF1100";
-              }
-              // Check stub words
-              if (withStubs.includes(words[i].innerText.toLowerCase())) {
-                stubPos = stubLoc[withStubs.indexOf(words[i].innerText.toLowerCase())]
-                if (stubWords[stubPos].includes(this.innerText.toLowerCase())) {
-                  words[i].style.backgroundColor = "#FF1100";
-                }
-              }
-            }
-
-            // Add to word list
-            highlightedWords.push(this.innerText.toLowerCase())
-            console.log(highlightedWords)
-          }
-
-          // Update top words
-          document.getElementById("yourTop").innerHTML = ""
-          for (var i = 0; i < highlightedWords.length; i++) {
-            document.getElementById("yourTop").innerHTML += ('<li>' + highlightedWords[i] + '</li>')
-          }
-
-        }
-      });
     }
 
 
@@ -343,11 +237,9 @@ $(document).ready(function() {
         currentPosition += 1
         document.getElementById("sampleCount").innerText = "Round " + localStorage.getItem("round") + "/3: Sample " + currentPosition + "/15"
         // Record user responses
-        userHighlights.push(highlightedWords)
         userAgree.push(document.querySelector('input[name="ADOptions"]:checked').value)
         userRelevant.push(document.querySelector('input[name="ROptions"]:checked').value)
 
-        console.log(userHighlights)
         console.log(userAgree)
         console.log(userRelevant)
 

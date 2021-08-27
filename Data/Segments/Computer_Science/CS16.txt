@@ -1,1 +1,0 @@
-Many embedded processors are designed using processor cores, a version of a processor written in a hardware description language such as Verilog or VHDL. The core allows a designer to integrate other application specific hardware with the processor core for fabrication on a single chip.

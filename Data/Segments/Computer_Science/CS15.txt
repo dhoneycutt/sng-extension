@@ -1,5 +1,0 @@
-Which of the following statements about characters and strings in C and Java are true?
-1. A string in C takes about half the memory as the same string in Java.
-2. Strings are just an informal name for single-dimension arrays of characters in C and Java.
-3. Strings in C and Java use null (0) to mark the end of a string.
-4. Operations on strings, like length, are faster in C than in Java.
