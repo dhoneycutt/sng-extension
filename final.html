@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="styles.css" />
 
     <p class="centerP">
-        Thank you for your participation. Please copy the survey code to put in Mechanical Turk as proof of completion to recieve your compensation. If there are any complications or you have any questions, please send a screenshot of this screen (if possible) to (indiestudyamt at gmail dot com) along with an explanation of the issue or your question. Thank you for completing our study.
+        Thank you for your participation. Please copy the survey code to put in Mechanical Turk as proof of completion to recieve your compensation. In some cases, the code may be a long text string instead of the intended short code. In this case, do not edit the code after pasting it into the survey code box, leave it entirely as it was when it was copied.
     </p>
+    <br /><br />
+    <p class="centerP">
+      If there are any complications or you have any questions, please send a screenshot of this screen (if possible) to (indiestudyamt at gmail dot com) along with an explanation of the issue or your question. Thank you for completing our study.
+    </p>
+
     <br />
     <p class="centerP">
         <textarea id="output" style="font-size:32px; text-align:center;"></textarea>
@@ -77,10 +82,14 @@
 
   IDBox = document.getElementById("output")
   IDBox.value = JSON.stringify(output)
+  IDBox.style.display = 'none'
 
   function copy() {
+    IDBox.style.display = ''
     IDBox.select()
     document.execCommand('copy')
+    IDBox.style.display = 'none'
+    alert("Code successfully copied. Remember, do not edit the copied code when pasting it into Mechanical Turk.")
   }
 
   //continueBtn.style.background = "#A9A9A9";
