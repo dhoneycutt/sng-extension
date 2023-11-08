@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
 
     <p class="centerP">
-        Thank you for your participation. Please press the "Copy to clipboard" button below to copy the survey code to put in Mechanical Turk as proof of completion to recieve your compensation. In some cases, the code may be a long text string instead of the intended short code. In this case, do not edit the code after pasting it into the survey code box, leave it entirely as it was when it was copied.
+        Thank you for your participation. Please press the "Copy to clipboard" button below to copy the survey code to put in SONA as proof of completion to recieve your credit. Make sure to not edit the code.
     </p>
     <br /><br />
     <p class="centerP">
@@ -53,6 +53,7 @@
   output.midQs = localStorage.midQs
   output.preQ.MLExp = localStorage.MLExp
   output.ordCond = localStorage.ordCond
+  output.rndCond = localStorage.rndCond
   output.pAns = localStorage.pAns
   output.time.start = localStorage.startTime
   output.time.firstE = localStorage.time0
@@ -81,15 +82,24 @@
   document.getElementById('output').setAttribute("innerText", JSON.stringify(output))
 
   IDBox = document.getElementById("output")
-  IDBox.value = JSON.stringify(output)
+  // IDBox.value = JSON.stringify(output)
+  IDBox.value = "lj3k92s"
   IDBox.style.display = 'none'
+
+  $.ajax({
+      type : "POST",
+      url : "json.php",
+      data : {
+          json : JSON.stringify(output)
+      }
+    });
 
   function copy() {
     IDBox.style.display = ''
     IDBox.select()
     document.execCommand('copy')
     IDBox.style.display = 'none'
-    alert("Code successfully copied. Remember, do not edit the copied code when pasting it into Mechanical Turk.")
+    alert("Code successfully copied. Remember, do not edit the copied code when pasting it into SONA.")
   }
 
   //continueBtn.style.background = "#A9A9A9";
