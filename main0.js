@@ -63,25 +63,69 @@ fileList3 = [
 
 if (localStorage.getItem("round") == null) {
   localStorage.setItem("round", '1')
-  fileList = fileList1
+  if (localStorage.getItem("rndCond") == "0") {
+    fileList = fileList1
+  }
+  else if (localStorage.getItem("rndCond") == "1") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList3
+  }
+  else {
+    fileList = fileList1
+  }
   userHighlights = []
   userAgree = []
   userRelevant = []
 }
 else if (localStorage.getItem("round") == "1") {
-  fileList = fileList1
+  if (localStorage.getItem("rndCond") == "0") {
+    fileList = fileList1
+  }
+  else if (localStorage.getItem("rndCond") == "1") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList3
+  }
+  else {
+    fileList = fileList1
+  }
   userHighlights = []
   userAgree = []
   userRelevant = []
 }
 else if (localStorage.getItem("round") == "2") {
-  fileList = fileList2
+  if (localStorage.getItem("rndCond") == "0") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "1") {
+    fileList = fileList3
+  }
+  else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList1
+  }
+  else {
+    fileList = fileList2
+  }
   userHighlights = JSON.parse(localStorage.getItem("userHighlights"))
   userAgree = JSON.parse(localStorage.getItem("userAgree"))
   userRelevant = JSON.parse(localStorage.getItem("userRelevant"))
 }
 else if (localStorage.getItem("round") == "3") {
-  fileList = fileList3
+  if (localStorage.getItem("rndCond") == "0") {
+    fileList = fileList3
+  }
+  else if (localStorage.getItem("rndCond") == "1") {
+    fileList = fileList1
+  }
+  else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList2
+  }
+  else {
+    fileList = fileList3
+  }
   userHighlights = JSON.parse(localStorage.getItem("userHighlights"))
   userAgree = JSON.parse(localStorage.getItem("userAgree"))
   userRelevant = JSON.parse(localStorage.getItem("userRelevant"))
