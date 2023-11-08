@@ -67,9 +67,18 @@ if (localStorage.getItem("round") == null) {
     fileList = fileList1
   }
   else if (localStorage.getItem("rndCond") == "1") {
-    fileList = fileList2
+    fileList = fileList1
   }
   else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "3") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "4") {
+    fileList = fileList3
+  }
+  else if (localStorage.getItem("rndCond") == "5") {
     fileList = fileList3
   }
   else {
@@ -85,9 +94,18 @@ else if (localStorage.getItem("round") == "1") {
     fileList = fileList1
   }
   else if (localStorage.getItem("rndCond") == "1") {
-    fileList = fileList2
+    fileList = fileList1
   }
   else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "3") {
+    fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "4") {
+    fileList = fileList3
+  }
+  else if (localStorage.getItem("rndCond") == "5") {
     fileList = fileList3
   }
   else {
@@ -107,6 +125,15 @@ else if (localStorage.getItem("round") == "2") {
   else if (localStorage.getItem("rndCond") == "2") {
     fileList = fileList1
   }
+  else if (localStorage.getItem("rndCond") == "3") {
+    fileList = fileList3
+  }
+  else if (localStorage.getItem("rndCond") == "4") {
+    fileList = fileList1
+  }
+  else if (localStorage.getItem("rndCond") == "5") {
+    fileList = fileList2
+  }
   else {
     fileList = fileList2
   }
@@ -119,10 +146,19 @@ else if (localStorage.getItem("round") == "3") {
     fileList = fileList3
   }
   else if (localStorage.getItem("rndCond") == "1") {
-    fileList = fileList1
+    fileList = fileList2
   }
   else if (localStorage.getItem("rndCond") == "2") {
+    fileList = fileList3
+  }
+  else if (localStorage.getItem("rndCond") == "3") {
+    fileList = fileList1
+  }
+  else if (localStorage.getItem("rndCond") == "4") {
     fileList = fileList2
+  }
+  else if (localStorage.getItem("rndCond") == "5") {
+    fileList = fileList1
   }
   else {
     fileList = fileList3
