@@ -72,6 +72,9 @@
   output.userRelevant = localStorage.userRelevant
   output.userTrust = localStorage.userTrust
   output.userHighlights = localStorage.userHighlights
+  var cOutput = {}
+  cOutput.id = localStorage.endCode
+
 
   // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(output));
   // var dlAnchorElem = document.getElementById('downloadAnchorElem');
@@ -83,7 +86,10 @@
 
   IDBox = document.getElementById("output")
   // IDBox.value = JSON.stringify(output)
-  IDBox.value = "lj3k92s"
+
+
+  // IDBox.value = "lj3k92s"
+  IDBox.value = localStorage.endCode
   IDBox.style.display = 'none'
 
   $.ajax({
@@ -91,6 +97,14 @@
       url : "json.php",
       data : {
           json : JSON.stringify(output)
+      }
+    });
+
+  $.ajax({
+      type : "POST",
+      url : "jsonCodes.php",
+      data : {
+          json : JSON.stringify(cOutput)
       }
     });
 
