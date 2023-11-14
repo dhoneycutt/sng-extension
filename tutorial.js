@@ -2,7 +2,7 @@
 highlightedWords = ["irrelevantone", "irrelevanttwo", "irrelevantthree"]
 
 
-tutorialText = ["When you see a system error, you can correct it in two different ways: correcting the classification and correcting the relevant words.", "If the system prediction is incorrect, press the \"I Disagree\" button.\n\n", "If you disagree with a highlighted word being highly relevant to distinguish between the topics, un-highlight it by clicking on it. If there is an un-highlighted word that you think is highly relevant to the topic, highlight it by clicking on it.", "The system will highlight the top five most relevant words used for its prediction. For your feedback you are not restricted to exactly five words, but are limited to having between two and eight words.", "Remember, there is not necessarily a \"correct\" set of relevant words. We ask you to use your personal judgement to determine what words you would use to decide whether the sample is about History or Computer Science.", "Highlight the following words: RelevantOne, RelevantTwo, RelevantThree. Un-highlight the following words: IrrelevantOne, IrrelevantTwo, IrrelevantThree."]
+tutorialText = ["Press the Next button to proceed to the tutorial. Remember that you can highlight and un-highlight words by clicking on them.", "Highlight the following words: RelevantOne, RelevantTwo, RelevantThree. Un-highlight the following words: IrrelevantOne, IrrelevantTwo, IrrelevantThree."]
 textPos = 0;
 
 $(document).ready(function() {
@@ -110,6 +110,9 @@ $(document).ready(function() {
         prevB.disabled = true
       }
       document.getElementById("clickable").innerText = tutorialText[textPos]
+    }
+    else {
+      window.location.href = "instructions.html"
     }
   }
 
