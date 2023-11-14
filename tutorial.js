@@ -2,7 +2,7 @@
 highlightedWords = ["irrelevantone", "irrelevanttwo", "irrelevantthree"]
 
 
-tutorialText = ["Press the Next button to proceed to the tutorial. Remember that you can highlight and un-highlight words by clicking on them.", "Highlight the following words: RelevantOne, RelevantTwo, RelevantThree. Un-highlight the following words: IrrelevantOne, IrrelevantTwo, IrrelevantThree."]
+tutorialText = ["Press the Next button to proceed to the tutorial. Remember that you will be able to highlight and un-highlight words by clicking on them.", "Highlight the following words: RelevantOne, RelevantTwo, RelevantThree. Un-highlight the following words: IrrelevantOne, IrrelevantTwo, IrrelevantThree."]
 textPos = 0;
 
 $(document).ready(function() {
