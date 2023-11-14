@@ -363,10 +363,10 @@ $(document).ready(function() {
           document.getElementById("word4").innerText = fileList[textPos][5]
           document.getElementById("word5").innerText = fileList[textPos][6]
 
-          document.getElementById("yourTop").innerHTML = ""
-          for (var i = 2; i < 7; i++) {
-            document.getElementById("yourTop").innerHTML += ('<li>' + fileList[textPos][i] + '</li>')
-          }
+          // document.getElementById("yourTop").innerHTML = ""
+          // for (var i = 2; i < 7; i++) {
+          //   document.getElementById("yourTop").innerHTML += ('<li>' + fileList[textPos][i] + '</li>')
+          // }
 
           var ADradio = document.querySelector('input[type=radio][name=ADOptions]:checked');
           ADradio.checked = false;
