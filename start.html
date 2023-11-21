@@ -52,6 +52,17 @@
   localStorage.intCond = getUrlParam("iC", 0)
   localStorage.ordCond = getUrlParam("oC", 0)
   localStorage.rndCond = getUrlParam("rC", 0)
+
+  if (localStorage.intCond == "rnd") {
+    var randomIntCond = Math.floor(Math.random() * 3);
+    localStorage.intCond = randomIntCond.toString()
+  }
+
+  if (localStorage.rndCond == "rnd") {
+    var randomRndCond = Math.floor(Math.random() * 6);
+    localStorage.rndCond = randomRndCond.toString()
+  }
+
   localStorage.removeItem('id')
   window.location.href = "consentform.html"
   // output = {}
