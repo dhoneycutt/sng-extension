@@ -49,24 +49,31 @@
   localStorage.midQs = JSON.stringify([0, 0, 0])
   localStorage.pAns = JSON.stringify([])
 
-  if (getURLParam("iC", 0) == "rnd") {
-    var randomIntCond = Math.floor(Math.random() * 3);
-    localStorage.intCond = randomIntCond.toString()
-  }
-  else {
-    localStorage.intCond = getUrlParam("iC", 0)
-  }
+
+  var randomIntCond = Math.floor(Math.random() * 3);
+  localStorage.intCond = randomIntCond.toString()
+
+  var randomRndCond = Math.floor(Math.random() * 6);
+  localStorage.rndCond = randomRndCond.toString()
+
+  // if (getURLParam("iC", 0) == "rnd") {
+  //   var randomIntCond = Math.floor(Math.random() * 3);
+  //   localStorage.intCond = randomIntCond.toString()
+  // }
+  // else {
+  //   localStorage.intCond = getUrlParam("iC", 0)
+  // }
 
 
   localStorage.ordCond = getUrlParam("oC", 0)
 
-  if (getURLParam("rC", 0) == "rnd") {
-    var randomRndCond = Math.floor(Math.random() * 6);
-    localStorage.rndCond = randomRndCond.toString()
-  }
-  else {
-    localStorage.rndCond = getUrlParam("rC", 0)
-  }
+  // if (getURLParam("rC", 0) == "rnd") {
+  //   var randomRndCond = Math.floor(Math.random() * 6);
+  //   localStorage.rndCond = randomRndCond.toString()
+  // }
+  // else {
+  //   localStorage.rndCond = getUrlParam("rC", 0)
+  // }
 
   localStorage.removeItem('id')
   window.location.href = "consentform.html"
